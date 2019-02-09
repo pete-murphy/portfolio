@@ -1,0 +1,11 @@
+header {
+  background: tomato;
+  h1::before {
+    display: inline-block;
+    content: "👋";
+    margin-right: 0.5rem;
+  }
+  &:hover h1::before {
+    animation: wave-animation 300ms 3;
+  }
+}

@@ -1,0 +1,67 @@
+@charset "UTF-8";
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--sans-font);
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+:root {
+  --scalar: 1.41428;
+  --sans-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --serif-font: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+
+@keyframes wave-animation {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+}
+header {
+  background: tomato;
+}
+header h1::before {
+  display: inline-block;
+  content: "👋";
+  margin-right: 0.5rem;
+}
+header:hover h1::before {
+  animation: wave-animation 300ms 3;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+}
+.container > * {
+  margin: 0 auto;
+  width: 40rem;
+  max-width: 90vw;
+}
+
+/*# sourceMappingURL=index.css.map */

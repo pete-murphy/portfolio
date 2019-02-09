@@ -1,0 +1,22 @@
+@import "./reset";
+@import "./variables";
+@import "./keyframes";
+
+@import "./header";
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  > * {
+    margin: 0 auto;
+    width: 40rem;
+    max-width: 90vw;
+  } 
+}
