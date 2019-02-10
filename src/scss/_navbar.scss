@@ -1,0 +1,12 @@
+nav.top-nav {
+  display: flex;
+  justify-content: space-between;
+  a {
+    padding: 1rem 1rem;
+    color: var(--primary);
+    &:focus, &:hover {
+      background: var(--primary);
+      color: var(--secondary);
+    }
+  }
+}

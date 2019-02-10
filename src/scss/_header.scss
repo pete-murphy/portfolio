@@ -1,11 +1,30 @@
-header {
-  background: tomato;
-  h1::before {
-    display: inline-block;
-    content: "👋";
-    margin-right: 0.5rem;
-  }
-  &:hover h1::before {
-    animation: wave-animation 300ms 3;
+.header {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  header {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: auto 1fr;
+    grid-auto-flow: column;
+    .waving-hand {
+      display: inline-block;
+      margin-right: 0.333em;
+      font-size: calc(2rem + 2vmin);
+      transform-origin: bottom right;
+    }
+    &:hover .waving-hand {
+      animation: wave-animation 400ms 3;
+    }
+    h1 {
+      grid-row: 1 / -1;
+      grid-column: 2 / -1;
+      font-size: calc(2rem + 2vmin);
+    }
+    p {
+      grid-row: 2 / -1;
+      grid-column: 2 / -1;
+      font-size: calc((var(--scalar) * 1rem) + 2vmin);
+    }
   }
 }

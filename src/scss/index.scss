@@ -2,6 +2,7 @@
 @import "./variables";
 @import "./keyframes";
 
+@import "./navbar";
 @import "./header";
 
 body {
@@ -9,6 +10,7 @@ body {
 }
 
 a {
+  transition: 200ms;
   text-decoration: none;
 }
 
