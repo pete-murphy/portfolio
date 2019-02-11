@@ -10,3 +10,12 @@
     transform: rotate(-15deg);
   }
 }
+
+@keyframes expand-width {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

@@ -1,3 +1,6 @@
+$tablet: 500px;
+$desktop: 800px;
+
 :root {
   --scalar: 1.41428;
   --sans-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -5,5 +8,6 @@
 
   // Colors
   --primary: black;
-  --secondary:white;
+  --secondary: white;
 }
+

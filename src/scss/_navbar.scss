@@ -1,12 +1,108 @@
-nav.top-nav {
+.nav {
+  --navlink-height: calc(var(--scalar) * 1rem);
+  --navlink-padding: calc(var(--scalar) * 1rem); 
+  --nav-container-height: calc(2 * var(--navlink-padding) + var(--navlink-height));
+  @media (min-width: $desktop) {
+    --navlink-padding: 1rem; 
+  }
+
+
+  background: #fffd;
+  @supports (-webkit-backdrop-filter: blur(5px)) {
+    -webkit-backdrop-filter: blur(5px);
+    background: #fffc;
+  }
   display: flex;
-  justify-content: space-between;
-  a {
-    padding: 1rem 1rem;
-    color: var(--primary);
-    &:focus, &:hover {
-      background: var(--primary);
-      color: var(--secondary);
+  justify-content: center;
+  position: sticky;
+  height: var(--nav-container-height);
+  &:hover nav.top-nav {
+    transform: translateY(0%);
+  }
+
+  svg {
+    --img-size: var(--navlink-height);
+    max-height: var(--img-size);
+    fill: whitesmoke;
+    margin: 0 auto;
+    transition: 200ms;
+  }
+
+  nav.top-nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--nav-container-height);
+    transform: translateY(calc(-1 * (100% + var(--nav-container-height))));
+    transition: 400ms;
+    align-items: center;
+    justify-content: center;
+    .nav-anchor {
+      a {
+        color: var(--primary);
+        &:hover ~ svg {
+          fill: dodgerblue;
+        }
+      }
+      position: relative;
+      display: inline-grid;
+      svg {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      a {
+        grid-column: 2 / -1;
+      }
+      grid-template-columns: 4rem 1fr;
+      font-size: var(--navlink-height);
+      line-height: 1;
+      padding: var(--navlink-padding) 0;
+      width: 600px;
+      max-width: 95vw;
+      &:focus, &:hover {
+        outline: none;
+      }
+      @media (min-width: $desktop) {
+        display: flex;
+        // flex-wrap: wrap;
+        width: auto;
+        padding: 0;
+        height: 1.6rem;
+        // flex-direction: column-reverse;
+        svg {
+          display: none;
+        }
+        &:focus, &:hover {
+          outline: none;
+          &::before {
+            content: "";
+            display: flex;
+            position: absolute;
+            // bottom: 0;
+            z-index: -1;
+            width: 100%;
+            height: 1rem;
+            transform: initial;
+            // background: var(--primary);
+            background: tomato;
+            opacity: 0.2;
+            animation: expand-width 200ms 1;
+          }
+        }  
+      }
+    }
+    background: #fffffff6;
+    @supports (-webkit-backdrop-filter: blur(5px)) {
+      -webkit-backdrop-filter: blur(5px);
+      background: #fffc;
+    }
+    max-width: 100%;
+    @media (min-width: $desktop) {
+      flex-direction: row;
+      justify-content: space-between;
+      transform: initial;
+      top: var(--navlink-padding);
     }
   }
+
 }
