@@ -40,8 +40,11 @@
     .nav-anchor {
       a {
         color: var(--primary);
-        &:hover ~ svg {
-          fill: dodgerblue;
+        &:hover, &:focus { 
+          outline: none;
+          & ~ svg {
+            fill: dodgerblue;
+          }
         }
       }
       position: relative;
@@ -59,30 +62,30 @@
       padding: var(--navlink-padding) 0;
       width: 600px;
       max-width: 95vw;
-      &:focus, &:hover {
-        outline: none;
+      & a:focus, & a:hover {
+
       }
       @media (min-width: $desktop) {
         display: flex;
         // flex-wrap: wrap;
         width: auto;
         padding: 0;
-        height: 1.6rem;
         // flex-direction: column-reverse;
         svg {
           display: none;
         }
-        &:focus, &:hover {
+        & a:focus, & a:hover {
           outline: none;
           &::before {
             content: "";
             display: flex;
             position: absolute;
             // bottom: 0;
+
             z-index: -1;
             width: 100%;
             height: 1rem;
-            transform: initial;
+            transform: translateY( var(--navlink-height) );
             // background: var(--primary);
             background: tomato;
             opacity: 0.2;

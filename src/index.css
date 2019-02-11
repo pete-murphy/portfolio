@@ -100,7 +100,10 @@ ul {
 .nav nav.top-nav .nav-anchor a {
   color: var(--primary);
 }
-.nav nav.top-nav .nav-anchor a:hover ~ svg {
+.nav nav.top-nav .nav-anchor a:hover, .nav nav.top-nav .nav-anchor a:focus {
+  outline: none;
+}
+.nav nav.top-nav .nav-anchor a:hover ~ svg, .nav nav.top-nav .nav-anchor a:focus ~ svg {
   fill: dodgerblue;
 }
 .nav nav.top-nav .nav-anchor svg {
@@ -110,30 +113,26 @@ ul {
 .nav nav.top-nav .nav-anchor a {
   grid-column: 2/-1;
 }
-.nav nav.top-nav .nav-anchor:focus, .nav nav.top-nav .nav-anchor:hover {
-  outline: none;
-}
 @media (min-width: 800px) {
   .nav nav.top-nav .nav-anchor {
     display: flex;
     width: auto;
     padding: 0;
-    height: 1.6rem;
   }
   .nav nav.top-nav .nav-anchor svg {
     display: none;
   }
-  .nav nav.top-nav .nav-anchor:focus, .nav nav.top-nav .nav-anchor:hover {
+  .nav nav.top-nav .nav-anchor a:focus, .nav nav.top-nav .nav-anchor a:hover {
     outline: none;
   }
-  .nav nav.top-nav .nav-anchor:focus::before, .nav nav.top-nav .nav-anchor:hover::before {
+  .nav nav.top-nav .nav-anchor a:focus::before, .nav nav.top-nav .nav-anchor a:hover::before {
     content: "";
     display: flex;
     position: absolute;
     z-index: -1;
     width: 100%;
     height: 1rem;
-    transform: initial;
+    transform: translateY(var(--navlink-height));
     background: tomato;
     opacity: 0.2;
     animation: expand-width 200ms 1;
