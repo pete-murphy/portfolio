@@ -1,0 +1,11 @@
+ul.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  & > * {
+    // flex-grow: 1;
+    padding: 5%;
+    margin: 0.5rem;
+    background: red;
+  }
+}
