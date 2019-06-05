@@ -1,0 +1,25 @@
+@import "./reset";
+@import "./variables";
+@import "./keyframes";
+
+@import "./navbar";
+@import "./header";
+@import "./card";
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  transition: 200ms;
+}
+
+.container {
+  width: 100%;
+  > * {
+    margin: 0 auto;
+    width: 40rem;
+    max-width: 90vw;
+  } 
+}

@@ -1,0 +1,221 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--sans-font);
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+:root {
+  --scalar: 1.41428;
+  --sans-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --serif-font: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+  --primary: black;
+  --secondary: white;
+}
+
+@keyframes wave-animation {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+}
+@keyframes expand-width {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.nav {
+  --navlink-height: calc(var(--scalar) * 1rem);
+  --navlink-padding: calc(var(--scalar) * 1rem);
+  --nav-container-height: calc(2 * var(--navlink-padding) + var(--navlink-height));
+  background: #fffd;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  height: var(--nav-container-height);
+}
+@media (min-width: 800px) {
+  .nav {
+    --navlink-padding: 1rem;
+  }
+}
+@supports (-webkit-backdrop-filter: blur(5px)) {
+  .nav {
+    -webkit-backdrop-filter: blur(5px);
+    background: #fffc;
+  }
+}
+.nav:hover nav.top-nav {
+  transform: translateY(0%);
+}
+.nav svg {
+  --img-size: var(--navlink-height);
+  max-height: var(--img-size);
+  fill: whitesmoke;
+  margin: 0 auto;
+  transition: 200ms;
+}
+.nav nav.top-nav {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: var(--nav-container-height);
+  transform: translateY(calc(-1 * (100% + var(--nav-container-height))));
+  transition: 400ms;
+  align-items: center;
+  justify-content: center;
+  background: #fffffff6;
+  max-width: 100%;
+}
+.nav nav.top-nav .nav-anchor {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 4rem 1fr;
+  font-size: var(--navlink-height);
+  line-height: 1;
+  padding: var(--navlink-padding) 0;
+  width: 600px;
+  max-width: 95vw;
+}
+.nav nav.top-nav .nav-anchor a {
+  color: var(--primary);
+}
+.nav nav.top-nav .nav-anchor a:hover, .nav nav.top-nav .nav-anchor a:focus {
+  outline: none;
+}
+.nav nav.top-nav .nav-anchor a:hover ~ svg, .nav nav.top-nav .nav-anchor a:focus ~ svg {
+  fill: dodgerblue;
+}
+.nav nav.top-nav .nav-anchor svg {
+  grid-column: 1;
+  grid-row: 1;
+}
+.nav nav.top-nav .nav-anchor a {
+  grid-column: 2/-1;
+}
+@media (min-width: 800px) {
+  .nav nav.top-nav .nav-anchor {
+    display: flex;
+    width: auto;
+    padding: 0;
+  }
+  .nav nav.top-nav .nav-anchor svg {
+    display: none;
+  }
+  .nav nav.top-nav .nav-anchor a:focus, .nav nav.top-nav .nav-anchor a:hover {
+    outline: none;
+  }
+  .nav nav.top-nav .nav-anchor a:focus::before, .nav nav.top-nav .nav-anchor a:hover::before {
+    content: "";
+    display: flex;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 1rem;
+    transform: translateY(var(--navlink-height));
+    background: dodgerblue;
+    animation: expand-width 200ms 1;
+  }
+}
+@supports (-webkit-backdrop-filter: blur(5px)) {
+  .nav nav.top-nav {
+    -webkit-backdrop-filter: blur(5px);
+    background: #fffc;
+  }
+}
+@media (min-width: 800px) {
+  .nav nav.top-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    transform: initial;
+    top: var(--navlink-padding);
+  }
+}
+
+.header {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+}
+.header header {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: auto 1fr;
+  grid-auto-flow: column;
+}
+.header header .waving-hand {
+  z-index: -1;
+  display: inline-block;
+  margin-right: 0.333em;
+  font-size: calc(2rem + 2vmin);
+  transform-origin: 75% 75%;
+}
+.header header h1 {
+  grid-row: 1/-1;
+  grid-column: 2/-1;
+  font-size: calc(2rem + 2vmin);
+}
+.header header p {
+  grid-row: 2/-1;
+  grid-column: 2/-1;
+  font-size: calc((var(--scalar) * 1rem) + 2vmin);
+}
+
+.wave-on-hover:hover .waving-hand {
+  animation: wave-animation 400ms 3;
+}
+
+.initial-wave .waving-hand {
+  animation: wave-animation 400ms 3;
+}
+
+ul.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+ul.cards > * {
+  padding: 5%;
+  margin: 0.5rem;
+  background: red;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  transition: 200ms;
+}
+
+.container {
+  width: 100%;
+}
+.container > * {
+  margin: 0 auto;
+  width: 40rem;
+  max-width: 90vw;
+}
+
+/*# sourceMappingURL=index.css.map */
